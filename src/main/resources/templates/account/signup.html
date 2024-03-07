@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<head th:replace="~{fragments/common :: head}">-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge"/>
+    <meta name="keywords" content="Yulian Brito, Yulian, Brito, Frontend Developer, Sign Up Sign In 1"/>
+    <meta name="author" content="Yulian Brito"/>
+    <title>Sign Up / Sign In 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" th:href="@{/css/test.css}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/test.js}"></script>
+<!--    <script type="text/javascript" src="/js/test.js"></script>-->
+
+</head>
+
+<body class="body">
+    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:replace="~{fragments/common :: menu}"> -->
+<!--    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:replace="~{fragments/common :: menu('signup')}">-->
+<!--    </nav>-->
+<!-- Choose Form -->
+
+<section class="form-container">
+    <span id="arrowClick" class="form-container__arrow">
+        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+    </span>
+    <div class="overlay"></div>
+    <div class="choose-form">
+        <div class="title">
+            <h1 class="title__h1">Welcome<br>Start for free</h1>
+        </div>
+        <div class="buttons">
+            <a id="signUp" class="buttons__signup" href="#">Sign up</a>
+            <a id="login" class="buttons__signup buttons__signup--login" href="#">Login</a>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+
+    <div class="login-form">
+        <div class="form-wrapper">
+            <form method="post" th:action="@{/account/signup}">
+                <label class="form-wrapper__label" for="username">Username</label>
+                <input id="username" class="form-wrapper__input" type="text" placeholder="Username" name="username" required>
+                <label class="form-wrapper__label" for="password">Password</label>
+                <input id="password" class="form-wrapper__input" type="password" placeholder="Password" name="password" pattern=".{3,}" title="Password must contain at least 3 characters" required>
+                <a class="login-form__forgot-password" href="#">Forgot password?</a>
+                <button class="buttons__signup buttons__signup--login-form" type="submit">로그인</button>
+
+                <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                    Invalid username and password.
+                </div>
+                <div th:if="${param.logout}" class="alert alert-primary" role="alert">
+                    You have been logged out.
+                </div>
+            </form>
+
+            <!-- Social-Media -->
+
+            <div class="social-media">
+                <h6 class="title__h2">Or connect with</h6>
+                <a class="buttons__signup buttons__signup--social" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i>&nbsp;facebook</a>
+                <a class="buttons__signup buttons__signup--social" href="#"><i class="fab fa-google" aria-hidden="true"></i>&nbsp;google</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Form -->
+
+    <div class="login-form login-form--register">
+        <div class="form-wrapper">
+            <form method="post">
+                <label class="form-wrapper__label" for="signup-email">Email</label>
+                <input id="signup-email" class="form-wrapper__input" type="email" placeholder="example@hotmail.com" name="email" required>
+                <label class="form-wrapper__label" for="signup-username">Username</label>
+                <input id="signup-username" class="form-wrapper__input" type="text" placeholder="Username" name="username" required>
+                <label class="form-wrapper__label" for="signup-password">Password</label>
+                <input id="signup-password" class="form-wrapper__input" type="password" placeholder="Password" name="password" pattern=".{3,}" title="Password must contain at least 3 characters" required>
+                <button class="buttons__signup buttons__signup--sign-up-form" type="submit">회원가입</button>
+            </form>
+
+            <!-- Social-Media -->
+
+            <div class="social-media">
+                <h2 class="title__h2">Or connect with</h2>
+                <a class="buttons__signup buttons__signup--social" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i>&nbsp;facebook</a>
+                <a class="buttons__signup buttons__signup--social" href="#"><i class="fab fa-google" aria-hidden="true"></i>&nbsp;google</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
